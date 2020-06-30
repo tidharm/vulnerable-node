@@ -17,6 +17,7 @@
     "morgan": "~1.6.1",
     "pg-promise": "^4.4.6",
     "serve-favicon": "~2.3.0",
-    "uglify-js": "2.3.0"
+    "uglify-js": "2.3.0",
+    "walker": "1.0.7"
   }
 }
