@@ -24,7 +24,7 @@ jobs:
         
       - name: Install WS CLI
         run: |
-          curl "http://downloads.whitesourcesoftware.com/ws-cli/master/latest/ws-cli-linux-amd64/ws" -o "ws"
+          curl -LJO "http://downloads.whitesourcesoftware.com/ws-cli/master/latest/ws-cli-linux-amd64/ws"
           wsApiKey=e3c2049e8c1042ada4d8f28c31c553fbd494b1cd1c604affbce29e26c199566b
           wsUserKey=2b900cb346084d9085d4e211db24dae6f539b5fc3cc643208a33ab4c64837c1d
           wsUrl="https://saas-eu.whitesourcesoftware.com"
