@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ws-scan
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'package.json'
+
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: 'NPM Install'
+        run: npm install --package-lock
+        
+      - name: Install WS CLI
+        run: |
+          sudo curl "http://downloads.whitesourcesoftware.com/ws-cli/master/latest/ws-cli-linux-amd64/ws" -o "/usr/local/bin/ws"
+          PATH="$PATH:/usr/local/bin"
+          ws config --api-key ${{ secrets.WS_ApiKey }} --url $WS_Url --user-key ${{ secrets.WS_UserKey }}
+
+      - name: WhiteSource Scan
+        run: ws scan
